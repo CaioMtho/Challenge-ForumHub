@@ -1,6 +1,6 @@
 package com.alura.forum.api.repositories;
 
-import com.alura.forum.api.models.Topico;
+import com.alura.forum.api.models.domain.Topico;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

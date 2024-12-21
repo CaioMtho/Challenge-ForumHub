@@ -1,8 +1,7 @@
 package com.alura.forum.api.services;
 
 import com.alura.forum.api.exception.exceptions.ResourceNotFoundException;
-import com.alura.forum.api.models.Usuario;
-import com.alura.forum.api.models.dto.topico.TopicoDtoGet;
+import com.alura.forum.api.models.domain.Usuario;
 import com.alura.forum.api.models.dto.usuario.UsuarioDtoGet;
 import com.alura.forum.api.models.dto.usuario.UsuarioDtoPost;
 import com.alura.forum.api.models.dto.usuario.UsuarioDtoPut;

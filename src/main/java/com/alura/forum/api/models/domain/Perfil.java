@@ -1,7 +1,10 @@
-package com.alura.forum.api.models;
+package com.alura.forum.api.models.domain;
 
+import com.alura.forum.api.models.dto.perfil.PerfilDtoPost;
 import com.alura.forum.api.models.dto.perfil.PerfilDtoPut;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
 import java.util.UUID;
 
 @Entity
@@ -13,13 +16,19 @@ public class Perfil {
     private String nome;
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    private @NotNull Usuario usuario;
 
     public Perfil() {}
     public Perfil(PerfilDtoPut perfilDtoPut) {
         this.nome = perfilDtoPut.nome();
         this.usuario = perfilDtoPut.usuario();
     }
+
+    public Perfil(String nome, Usuario usuario) {
+        this.nome = nome;
+        this.usuario = usuario;
+    }
+
     // Getters and Setters
     public UUID getId() {
         return id;

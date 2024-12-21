@@ -1,6 +1,6 @@
 package com.alura.forum.api.models.dto.curso;
 
-import com.alura.forum.api.models.Curso;
+import com.alura.forum.api.models.domain.Curso;
 
 import java.util.UUID;
 

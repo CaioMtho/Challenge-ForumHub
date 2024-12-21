@@ -1,6 +1,5 @@
-package com.alura.forum.api.models;
+package com.alura.forum.api.models.domain;
 
-import com.alura.forum.api.models.dto.topico.TopicoDtoPost;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -31,18 +30,11 @@ public class Topico {
 
     public Topico() {}
 
-    public Topico(TopicoDtoPost topicoDtoPost) {
-        this.titulo = topicoDtoPost.titulo();
-        this.autor = topicoDtoPost.autor();
-        this.curso = topicoDtoPost.curso();
-        this.mensagem = topicoDtoPost.mensagem();
-    }
-
-    public Topico(String titulo, String mensagem, LocalDateTime dataCriacao, Status status, Perfil autor, Curso curso) {
+    public Topico(String titulo, String mensagem, Perfil autor, Curso curso) {
         this.titulo = titulo;
         this.mensagem = mensagem;
-        this.dataCriacao = dataCriacao;
-        this.status = status;
+        this.dataCriacao = LocalDateTime.now();
+        this.status = Status.ABERTO;
         this.autor = autor;
         this.curso = curso;
     }

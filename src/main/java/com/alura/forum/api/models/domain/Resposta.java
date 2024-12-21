@@ -1,6 +1,9 @@
-package com.alura.forum.api.models;
+package com.alura.forum.api.models.domain;
 
+import com.alura.forum.api.models.dto.resposta.RespostaDtoPost;
 import jakarta.persistence.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
 import java.util.UUID;
 
 @Entity
@@ -18,10 +21,10 @@ public class Resposta {
 
     public Resposta() {}
 
-    public Resposta(String mensagem, Topico topico, boolean solucao) {
+    public Resposta(String mensagem, Topico topico) {
         this.mensagem = mensagem;
         this.topico = topico;
-        this.solucao = solucao;
+        this.solucao = false;
     }
 
     // Getters and Setters

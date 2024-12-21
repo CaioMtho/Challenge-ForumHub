@@ -1,5 +1,5 @@
-package com.alura.forum.api.models;
-
+package com.alura.forum.api.models.domain;
+import com.alura.forum.api.models.dto.curso.CursoDtoPost;
 import jakarta.persistence.*;
 import java.util.UUID;
 
@@ -11,6 +11,12 @@ public class Curso {
     private UUID id;
     private String nome;
     private String categoria;
+
+    public Curso() {}
+    public Curso(CursoDtoPost cursoDtoPost) {
+        this.nome = cursoDtoPost.nome();
+        this.categoria = cursoDtoPost.categoria();
+    }
 
     // Getters and Setters
     public UUID getId() {

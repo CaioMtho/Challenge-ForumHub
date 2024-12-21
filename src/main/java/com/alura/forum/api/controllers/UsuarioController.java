@@ -1,6 +1,6 @@
 package com.alura.forum.api.controllers;
 
-import com.alura.forum.api.models.Usuario;
+import com.alura.forum.api.models.domain.Usuario;
 import com.alura.forum.api.models.dto.usuario.UsuarioDtoGet;
 import com.alura.forum.api.models.dto.usuario.UsuarioDtoPost;
 import com.alura.forum.api.models.dto.usuario.UsuarioDtoPut;
@@ -50,13 +50,6 @@ public class UsuarioController {
             @RequestBody UsuarioDtoPut usuarioDtoPut){
         UUID uuid = UUIDService.valideUUID(id);
         UsuarioDtoGet usuario = usuarioService.updateUsuario(uuid, usuarioDtoPut);
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .build()
-                .toUri();
-        return ResponseEntity
-                .ok()
-                .header("Location", location.toString() )
-                .body(usuario);
+        return ResponseEntity.ok(usuario);
     }
 }

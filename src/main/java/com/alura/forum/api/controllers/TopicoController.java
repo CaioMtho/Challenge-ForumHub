@@ -1,5 +1,5 @@
 package com.alura.forum.api.controllers;
-import com.alura.forum.api.models.Topico;
+import com.alura.forum.api.models.domain.Topico;
 import com.alura.forum.api.models.dto.topico.TopicoDtoGet;
 import com.alura.forum.api.models.dto.topico.TopicoDtoPost;
 import com.alura.forum.api.models.dto.topico.TopicoDtoPut;
@@ -61,14 +61,7 @@ public class TopicoController {
             @RequestBody @Valid TopicoDtoPut topicoDtoPut) {
         UUID uuid = UUIDService.valideUUID(id);
         TopicoDtoGet topico = topicoService.update(uuid, topicoDtoPut);
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .build()
-                .toUri();
-        return ResponseEntity
-                .ok()
-                .header("Location", location.toString() )
-                .body(topico);
+        return ResponseEntity.ok(topico);
     }
 }
 

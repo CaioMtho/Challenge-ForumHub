@@ -1,8 +1,9 @@
-package com.alura.forum.api.models;
+package com.alura.forum.api.models.domain;
 
 import com.alura.forum.api.models.dto.usuario.UsuarioDtoPost;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +18,7 @@ public class Usuario {
     private String email;
     private String senha;
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Perfil> perfis = new ArrayList<>();
 
     public Usuario() {}
@@ -26,11 +28,6 @@ public class Usuario {
         this.nome = usuarioDtoPost.nome();
         this.email = usuarioDtoPost.email();
         this.senha = usuarioDtoPost.senha();
-    }
-
-    public void addPerfil(Perfil perfil) {
-        perfil.setUsuario(this);
-        this.perfis.add(perfil);
     }
 
     // Getters and Setters
