@@ -2,7 +2,6 @@ package com.alura.forum.api.services;
 import com.alura.forum.api.models.domain.Curso;
 import com.alura.forum.api.models.domain.Perfil;
 import com.alura.forum.api.models.domain.Topico;
-import com.alura.forum.api.models.domain.Usuario;
 import com.alura.forum.api.models.dto.topico.TopicoDtoGet;
 import com.alura.forum.api.models.dto.topico.TopicoDtoPost;
 import com.alura.forum.api.models.dto.topico.TopicoDtoPut;
@@ -14,9 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import com.alura.forum.api.exception.exceptions.ResourceNotFoundException;
+import com.alura.forum.api.config.exception.exceptions.ResourceNotFoundException;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service

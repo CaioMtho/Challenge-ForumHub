@@ -1,6 +1,6 @@
 package com.alura.forum.api.services;
 
-import com.alura.forum.api.exception.exceptions.ResourceNotFoundException;
+import com.alura.forum.api.config.exception.exceptions.ResourceNotFoundException;
 import com.alura.forum.api.models.domain.Perfil;
 import com.alura.forum.api.models.domain.Usuario;
 import com.alura.forum.api.models.dto.perfil.PerfilDtoGet;
@@ -10,8 +10,6 @@ import com.alura.forum.api.repositories.PerfilRepository;
 import com.alura.forum.api.repositories.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;

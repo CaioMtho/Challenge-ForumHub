@@ -1,6 +1,6 @@
 package com.alura.forum.api.services;
 
-import com.alura.forum.api.exception.exceptions.ResourceNotFoundException;
+import com.alura.forum.api.config.exception.exceptions.ResourceNotFoundException;
 import com.alura.forum.api.models.domain.Resposta;
 import com.alura.forum.api.models.dto.resposta.RespostaDtoGet;
 import com.alura.forum.api.models.dto.resposta.RespostaDtoPost;

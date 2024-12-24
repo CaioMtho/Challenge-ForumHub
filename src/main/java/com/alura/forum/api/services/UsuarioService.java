@@ -1,6 +1,6 @@
 package com.alura.forum.api.services;
 
-import com.alura.forum.api.exception.exceptions.ResourceNotFoundException;
+import com.alura.forum.api.config.exception.exceptions.ResourceNotFoundException;
 import com.alura.forum.api.models.domain.Usuario;
 import com.alura.forum.api.models.dto.usuario.UsuarioDtoGet;
 import com.alura.forum.api.models.dto.usuario.UsuarioDtoPost;
@@ -11,16 +11,17 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-public class UsuarioService {
+public class  UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
     @Autowired
-    private TopicoRepository topicoRepository;
+    private PasswordEncoder passwordEncoder;
 
     public Page<UsuarioDtoGet> getUsuarios(Pageable pageable) {
         Page<Usuario> usuarios = usuarioRepository.findAll(pageable);
@@ -35,7 +36,7 @@ public class UsuarioService {
 
     @Transactional
     public Usuario createUsuario(UsuarioDtoPost usuarioDtoPost) {
-        return usuarioRepository.save(new Usuario(usuarioDtoPost));
+        return usuarioRepository.save(new Usuario(usuarioDtoPost.nome(), usuarioDtoPost.email(), passwordEncoder.encode(usuarioDtoPost.senha()) ));
     }
     @Transactional
     public void deleteUsuario(UUID id) {
