@@ -2,6 +2,8 @@
   <h1>Alura Forum Hub</h1>
   <I>Challenge Oracle ONE</I>
   
+![badge](Badge-Spring.png)
+
   <h4>Uma API Rest que controla o server-side de um forum da Alura.</h4>
 </div>
 
