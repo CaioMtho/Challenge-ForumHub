@@ -5,6 +5,7 @@ import com.alura.forum.api.models.dto.topico.TopicoDtoPost;
 import com.alura.forum.api.models.dto.topico.TopicoDtoPut;
 import com.alura.forum.api.services.TopicoService;
 import com.alura.forum.api.services.UUIDService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,6 +21,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/topico")
+@SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 
     @Autowired

@@ -5,6 +5,7 @@ import com.alura.forum.api.models.dto.resposta.RespostaDtoPut;
 import com.alura.forum.api.services.RespostaService;
 import com.alura.forum.api.services.TopicoService;
 import com.alura.forum.api.services.UUIDService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/topico/{topicoId}/resposta")
+@SecurityRequirement(name = "bearer-key")
 public class RespostaController {
     @Autowired
     private RespostaService respostaService;
@@ -40,7 +42,8 @@ public class RespostaController {
     @PostMapping
     public ResponseEntity<RespostaDtoGet> postResposta(@RequestBody @Valid RespostaDtoPost respostaDtoPost,
                                                        @PathVariable String topicoId) {
-        var resposta = respostaService.createResposta(respostaDtoPost);
+        UUID uuid = UUIDService.valideUUID(topicoId);
+        var resposta = respostaService.createResposta(uuid, respostaDtoPost);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}")
                 .buildAndExpand(resposta.id())

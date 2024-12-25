@@ -36,8 +36,8 @@ public class RespostaService {
                 .orElseThrow(()-> new ResourceNotFoundException("Resposta não encontrada")));
     }
 
-    public RespostaDtoGet createResposta(RespostaDtoPost respostaDtoPost) {
-        Resposta resposta = respostaRepository.save(convertDtoToResposta(respostaDtoPost));
+    public RespostaDtoGet createResposta(UUID topicoId, RespostaDtoPost respostaDtoPost) {
+        Resposta resposta = respostaRepository.save(convertDtoToResposta(topicoId, respostaDtoPost));
         return new RespostaDtoGet(resposta);
     }
 
@@ -59,8 +59,8 @@ public class RespostaService {
         respostaRepository.delete(resposta);
     }
 
-    public Resposta convertDtoToResposta(RespostaDtoPost respostaDtoPost) {
-        var topico = topicoRepository.findById(respostaDtoPost.topicoId())
+    public Resposta convertDtoToResposta(UUID topicoId, RespostaDtoPost respostaDtoPost) {
+        var topico = topicoRepository.findById(topicoId)
                 .orElseThrow(()-> new ResourceNotFoundException("Topico não encontrado"));
         return new Resposta(respostaDtoPost.mensagem(), topico);
     }

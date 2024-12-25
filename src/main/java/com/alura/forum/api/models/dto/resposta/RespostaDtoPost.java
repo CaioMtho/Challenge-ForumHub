@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 
 public record RespostaDtoPost(
-        @NotBlank String mensagem,
-        @NotNull UUID topicoId
+        @NotBlank String mensagem
 ) {
 }

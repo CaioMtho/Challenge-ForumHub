@@ -5,6 +5,7 @@ import com.alura.forum.api.models.dto.curso.CursoDtoPost;
 import com.alura.forum.api.models.dto.curso.CursoDtoPut;
 import com.alura.forum.api.services.CursoService;
 import com.alura.forum.api.services.UUIDService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,7 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/curso")
-public class CursoController {
+@SecurityRequirement(name = "bearer-key")public class CursoController {
     @Autowired
     private CursoService cursoService;
 

@@ -6,6 +6,7 @@ import com.alura.forum.api.models.dto.perfil.PerfilDtoPut;
 import com.alura.forum.api.models.dto.topico.TopicoDtoGet;
 import com.alura.forum.api.services.PerfilService;
 import com.alura.forum.api.services.UUIDService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ public class PerfilController {
     private PerfilService perfilService;
 
     @GetMapping("/usuario/{usuarioId}")
+    @SecurityRequirement(name = "bearer-key")
     public ResponseEntity<List<PerfilDtoGet>> getPerfis(@PathVariable String usuarioId) {
         UUID uuid = UUIDService.valideUUID(usuarioId);
         return ResponseEntity.ok(perfilService.getPerfisByUsuario(uuid));

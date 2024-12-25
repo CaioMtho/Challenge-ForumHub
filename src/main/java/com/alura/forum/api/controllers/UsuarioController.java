@@ -6,6 +6,7 @@ import com.alura.forum.api.models.dto.usuario.UsuarioDtoPost;
 import com.alura.forum.api.models.dto.usuario.UsuarioDtoPut;
 import com.alura.forum.api.services.UUIDService;
 import com.alura.forum.api.services.UsuarioService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,11 +24,13 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @SecurityRequirement(name = "bearer-key")
     @GetMapping
     public ResponseEntity<Page<UsuarioDtoGet>> getUsuarios(Pageable pageable) {
         return ResponseEntity.ok(usuarioService.getUsuarios(pageable));
     }
 
+    @SecurityRequirement(name = "bearer-key")
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioDtoGet> getUsuario(@PathVariable String id) {
         UUID uuid = UUID.fromString(id);
@@ -44,6 +47,7 @@ public class UsuarioController {
         return ResponseEntity.created(uri).body(new UsuarioDtoGet(usuario));
     }
 
+    @SecurityRequirement(name = "bearer-key")
     @PutMapping("/{id}")
     public ResponseEntity<UsuarioDtoGet> updateUsuario(
             @PathVariable String id,
