@@ -7,8 +7,8 @@
 
 ## Índice 
 1. [Requisitos](#requisitos)
-2. [Instalação](#instalacao)
-3. [Autenticação](#autenticacao)
+2. [Instalação](#instalação)
+3. [Autenticação](#autenticação)
 4. [Endpoints](#endpoints)
 5. [Exemplos de Uso](#exemplos-de-uso)
 6. [Tratamento de Erros](#tratamento-de-erros)
@@ -18,6 +18,11 @@
 - Maven (caso vá executar com os comandos mvn).
   
 ## Instalação
+> Será necessário criar o próprio servidor MySQL, crie variáveis de ambiente com os nomes "DB_URL", "DB_USERNAME", "DB_PASSWORD" e (opcionalmente) "API_SECRET".
+
+Acesse os binários e instruções [aqui](https://github.com/CaioMtho/Challenge-ForumHub/releases/tag/challenge).
+
+Alternativa:
 Clone o repositório:
 
 ```bash
@@ -35,6 +40,7 @@ mvn install
 ```bash
 mvn spring-boot:run
 ```
+
 
 ## Autenticação
 Use o formato Bearer Token, envie uma requisição post para o endpoint de usuários para registrar, 
